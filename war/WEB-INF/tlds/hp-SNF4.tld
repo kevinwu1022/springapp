@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+<tlibversion>1.0</tlibversion>
+<jspversion>1.1</jspversion>
+<shortname>sso</shortname>
+<uri>/hp-SNF4</uri>
+<info>Custom Tags for SSO related HTML functionality</info>
+
+<!-- these are new tags that are all in the com.hp.hpweblib package. They 
+ support both the old non-Struts sso application as well as Struts/Tiles 
+ applications such as Software Analysis Tool (Quincy) -->
+<tag>
+    <name>leftNav</name>
+    <tagclass>com.hp.hpweblib.LeftNavTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        Generates the new HP design left nav table. If you are using the 
+        pageContent tag in your pages, do not use this tag, but use 
+        'pageLeftNav' instead. 
+    </info>
+    <attribute>
+        <name>title</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>titleKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>bundle</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>titleURL</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>showDocCart</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>printVersion</name>
+    <tagclass>com.hp.hpweblib.PrintVersionTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        includes content if printable version
+    </info>
+</tag>
+<tag>
+    <name>notPrintVersion</name>
+    <tagclass>com.hp.hpweblib.NotPrintVersionTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        includes content if NOT printable version
+    </info>
+</tag>
+<tag>
+    <name>isOvNav</name>
+    <tagclass>com.hp.hpweblib.OvNavTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        includes content if openview navigation should be used
+    </info>
+</tag>
+<tag>
+    <name>isNotOvNav</name>
+    <tagclass>com.hp.hpweblib.NotOvNavTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        includes content if openview navigation should NOT be used
+        (HP management software should be used)
+    </info>
+</tag>
+<tag>
+    <name>contentBlock</name>
+    <tagclass>com.hp.hpweblib.ContentBlockTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        Generates new hp web ContentBlock with a given set of attributes
+    </info>
+    <attribute>
+        <name>width</name>
+        <required>true</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>theme</name>
+        <!--If not specified, uses the page's theme -->
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>background</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>style</name>
+        <!--specifies the style of the content block.
+        Allowed values: 'A', 'Acolored', 'B', 'C', 'Ccolored'. -->
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>headerKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>header</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>bundle</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>headerURL</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>hr</name>
+    <tagclass>com.hp.hpweblib.HrTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Generates a horizontal rule with given width (or default 560)
+    </info>
+    <attribute>
+        <name>width</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>color</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>alternatingColor</name>
+    <tagclass>com.hp.hpweblib.AlternatingColorTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Returns two color codes in alternating fashion
+    </info>
+    <attribute>
+        <name>color1</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>color2</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>reset</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>spacer</name>
+    <tagclass>com.hp.hpweblib.SpacerTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Returns a spacer table with given width and height
+    </info>
+    <attribute>
+        <name>height</name>
+        <required>true</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>width</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+
+<tag>
+    <name>spacerCell</name>
+    <tagclass>com.hp.hpweblib.SpacerCellTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Returns a spacer cell with given width and height
+    </info>
+    <attribute>
+        <name>height</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>width</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>style</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+
+<tag>
+    <name>spacerImage</name>
+    <tagclass>com.hp.hpweblib.SpacerImageTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Returns a spacer image with given width and height
+    </info>
+    <attribute>
+        <name>height</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>width</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>style</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+
+<tag>
+    <name>spacerTable</name>
+    <tagclass>com.hp.hpweblib.SpacerTableTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Returns a spacer table with given width and height
+    </info>
+    <attribute>
+        <name>height</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>width</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>style</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+
+<tag>
+    <name>spacerRow</name>
+    <tagclass>com.hp.hpweblib.SpacerRowTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Returns a spacer table with given width and height
+    </info>
+    <attribute>
+        <name>height</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>width</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>style</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+
+<tag>
+    <name>link</name>
+    <tagclass>com.hp.hpweblib.LinkTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Generates a new hp web link
+    </info>
+    <attribute>
+        <name>name</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>nameKey</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>url</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>urlKey</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>style</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>newWindow</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>noLinkText</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>noLinkTextKey</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>leftNavLink</name>
+    <tagclass>com.hp.hpweblib.LeftNavLinkTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Generates a link inside the new HP leftnav area
+    </info>
+    <attribute>
+        <name>nameKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>name</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>bundle</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>url</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>urlKey</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>style</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>level</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>leftNavSeparator</name>
+    <tagclass>com.hp.hpweblib.LeftNavSeparatorTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Generates an horizontal line inside the new HP leftnav area
+    </info>
+</tag>
+
+<!-- the following tags are in the com.hp.hpweblib.standalone package.
+     You shouldn't need these if you are using a Struts/Tiles framework, 
+     but if you're not, these will come in handy. 
+ -->
+<tag>
+    <name>pageContent</name>
+    <tagclass>com.hp.hpweblib.standalone.PageContentTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        encapsulates pretty much the entire HP new design page 
+        (except for headers and footer)
+    </info>
+    <attribute>
+        <name>title</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>titleKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>tagline</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>taglineKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>bundle</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>printURL</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>leftNav</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>pageTitle</name>
+    <tagclass>com.hp.hpweblib.standalone.PageTitleTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        used inside PageContentTag to override title value
+    </info>
+    <attribute>
+        <name>title</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>titleKey</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>pageLeftNav</name>
+    <tagclass>com.hp.hpweblib.standalone.LeftNavTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        Generates the new HP design left nav table. Use this tag inside 
+        the pageContent tag. If not using the pageContent tag, use 
+        'leftNav' instead. 
+    </info>
+    <attribute>
+        <name>title</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>titleKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>bundle</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>titleURL</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>titleURLKey</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>showDocCart</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>leftColumnContent</name>
+    <tagclass>com.hp.hpweblib.standalone.LeftColumnContentTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        Adds content to the left column (use inside the pageLeftNav tag)
+    </info>
+</tag>
+<tag>
+    <name>breadcrumbLink</name>
+    <tagclass>com.hp.hpweblib.standalone.BreadcrumbLinkTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Generates a breadcrumb link inside the hierarchicalHeader tag content
+    </info>
+    <attribute>
+        <name>name</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>nameKey</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>bundle</name>
+        <required>false</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>url</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>jsButton</name>
+    <tagclass>com.hp.hpweblib.HtmlButtonJs</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Generates an HTML button using javascript
+    </info>
+    <attribute>
+        <name>name</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>type</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>style</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>value</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>targetURL</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>contentTypeCbSet</name>
+    <tagclass>com.hp.hpweblib.ContentTypeCbSetTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    <info>
+        An outer tag to handle several contentTypeCb tags
+    </info>
+    <attribute>
+        <name>typeKeys</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>descriptionKeys</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>cbValues</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>statusKeys</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>linkKeys</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>page</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>method</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>name</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
+<tag>
+    <name>contentTypeCb</name>
+    <tagclass>com.hp.hpweblib.ContentTypeCbTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+        Generates a content type checkbox
+    </info>
+    <attribute>
+        <name>typeKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>descriptionKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>value</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>linkKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>statusKey</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>page</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>method</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>index</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>name</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>checked</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
+<!-- for listing the log files. Used in adminServlet -->
+<tag>
+    <name>logList</name>
+    <tagclass>com.hp.taglib.LogListTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>Lists log files</info>
+    <attribute>
+        <name>logFilePath</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>link</name>
+        <required>true</required>
+        <rtexprvalue>false</rtexprvalue>
+    </attribute>
+</tag>
+
+</taglib>
+

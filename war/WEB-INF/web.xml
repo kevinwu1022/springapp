@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<servlet>
+		<servlet-name>springapp</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>springapp</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>   
+       <servlet-name>GetCaptcha</servlet-name>  
+       <servlet-class>springapp.util.GetCaptcha</servlet-class>  
+    </servlet>
+    
+    <servlet-mapping>  
+  		<servlet-name>GetCaptcha</servlet-name>  
+  		<url-pattern>/getcaptcha.sl</url-pattern>  
+	</servlet-mapping> 
+  
+	<welcome-file-list>
+		<welcome-file>
+         		index.jsp
+         	</welcome-file>
+	</welcome-file-list>
+	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/c</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/fmt</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/fmt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/fn</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/fn.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/hp-SNF4</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/hp-SNF4.tld</taglib-location>
+		</taglib>
+		<taglib>
+      		<taglib-uri>/spring</taglib-uri>
+      		<taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
+    	</taglib>
+	</jsp-config>
+</web-app>
